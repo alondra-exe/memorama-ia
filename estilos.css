@@ -36,12 +36,17 @@
         font-size: 40px;
     }
 
+    .encabezado div {
+        float: left;
+    }
+
 .memorama {
     display: grid;
-    grid-template-columns: repeat(10, auto);
+    grid-template-columns: repeat(9, auto);
     grid-gap: 5px;
     padding: 0;
-    margin: 30px;
+    margin: 20px;
+    text-align: center;
 }
 
     .memorama img {
@@ -100,3 +105,8 @@
         height: 50px;
         font-size: 60px;
     }
+
+.finJuego {
+    text-align: center;
+    font-size: 30px;
+}
