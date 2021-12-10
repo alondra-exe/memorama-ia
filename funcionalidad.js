@@ -6,7 +6,7 @@ function ocultarInstrucciones() {
 	document.querySelector("#modalInstrucciones").style.display = "none";
 }
 
-function ocultarSeleccion() {
+function finJuego() {
 	document.querySelector("#modalFin").style.display = "none";
 }
 
@@ -44,25 +44,22 @@ var imagenesRandom = []; // Arreglo que almacena las imagenes barajeadas
 var cartasRandom = {}; // Arreglo que almacena las cartas barajeadas
 
 // Imagenes para las 22 cartas
-var img1 = "../images/img1.png";
-var img2 = "../images/img2.png";
-var img3 = "../images/img3.png";
-var img4 = "../images/img4.png";
-var img5 = "../images/img5.png";
-var img6 = "../images/img6.png";
-var img7 = "../images/img7.png";
-var img8 = "../images/img8.png";
-var img9 = "../images/img9.png";
-var img10 = "../images/img10.png";
-var img11 = "../images/img11.png";
+var img1 = "images/img1.png";
+var img2 = "images/img2.png";
+var img3 = "images/img3.png";
+var img4 = "images/img4.png";
+var img5 = "images/img5.png";
+var img6 = "images/img6.png";
+var img7 = "images/img7.png";
+var img8 = "images/img8.png";
+var img9 = "images/img9.png";
+var img10 = "images/img10.png";
+var img11 = "images/img11.png";
 
 // reverso de las cartas
-var ReversoImg = "../images/back.png";
+var ReversoImg = "images/back.png";
 
 // Imagenes para indicar que un par de cartas fue encontrado (uno para el usuario y otra para la IA)
-var ImagenAleatoriaIA = "../images/" + theme + "/icons/empty2.png";
-var ImagenAleatoriaUsuario = "../images/" + theme + "/icons/empty.png";
-var ImagenAleatoria = "../images/" + theme + "/icons/empty.png";
 
 // imagenes: Arrego con todos los pares de imagenes (11 pares o 22 elementos)
 var imagenes = [img1, img1, img2, img2, img3, img3, img4, img4, img5, img5,
@@ -127,17 +124,15 @@ for (var a = 0; a < numeroCartas; a++) {
 function IniciarJuego(JugadorInicial) {
 	var modalSeleccion = document.getElementById('modalSeleccion');
 	if (JugadorInicial == "usuario") {
-		highlightUser();
 		turnoUsuario = true;
 		puedeJugar = true;
 		turnoIA = false;
 	}
 	else {
-		highlightAI();
 		turnoUsuario = false;
 		puedeJugar = false;
 		turnoIA = true;
-		IniciarTimer(JugarIA, 600);
+		setTimeout(JugarIA, 600);
 	}
 	modalSeleccion.style.display = "none";
 }
@@ -182,7 +177,6 @@ function JugarUsuario(PosicionID) {
 		VolteoPorTurnos += 1;
 		if (VolteoPorTurnos == 2) {
 			puedeJugar = false;
-			IniciarTimer(highlightAI, 1000);
 			revisarPares('user');
 		}
 	}
@@ -342,7 +336,6 @@ function eleccionSemiAleatoria() {
 			}
 		}
 	}
-	IniciarTimer(highlightUser, 1000);
 	revisarPares('ai');
 }
 
@@ -400,26 +393,22 @@ function revisarPares(Jugador) {
 			puntosIA += 1;
 			document.getElementById('puntajeIA').innerHTML = puntosIA;
 			turnoIA = true;
-			IniciarTimer(highlightAI, 1000);
-			ImagenAleatoria = ImagenAleatoriaIA;
 		}
 		if (Jugador == 'user') {
 			puntosUsuario += 1;
 			document.getElementById('puntajeUsuario').innerHTML = puntosUsuario;
 			turnoUsuario = true;
 			puedeJugar = false;
-			IniciarTimer(highlightUser, 1000);
 			turnoIA = false;
-			ImagenAleatoria = ImagenAleatoriaUsuario;
 		}
 		posicionesRemovidas.push(posicionesTurnoActual[0]);
 		posicionesRemovidas.push(posicionesTurnoActual[1]);
-		IniciarTimer(RemoverImagen, 1000);
+		setTimeout(RemoverImagen, 1000);
 	}
 	else {
 		turnoUsuario = !turnoUsuario;
 		turnoIA = !turnoIA;
-		IniciarTimer(ImagenesNoVolteadas, 1000);
+		setTimeout(ImagenesNoVolteadas, 1000);
 	}
 	turnoElegido = [];
 }
@@ -431,8 +420,6 @@ function revisarPares(Jugador) {
  */
 function RemoverImagen() {
 	posicionesTurnoActual = [];
-	posicioneElegida[0].src = ImagenAleatoria;
-	posicioneElegida[1].src = ImagenAleatoria;
 	VolteoPorTurnos = 0;
 	posicioneElegida = [];
 	ExistenCartas();
@@ -440,7 +427,6 @@ function RemoverImagen() {
 		JugarIA();
 	}
 	else {
-		IniciarTimer(highlightUser, 1000);
 		puedeJugar = true;
 	}
 }
@@ -461,7 +447,6 @@ function ImagenesNoVolteadas() {
 		JugarIA();
 	}
 	else {
-		IniciarTimer(highlightUser, 1000);
 		puedeJugar = true;
 	}
 }

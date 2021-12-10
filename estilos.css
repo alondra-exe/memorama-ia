@@ -1,5 +1,8 @@
 ﻿.seleccion {
-    background: radial-gradient(circle, rgba(251,245,248,0.8981967787114846) 0%, rgba(255,255,255,0.8057598039215687) 100%);
+    background: background: rgba(0,0,0,0.68);
+    background: radial-gradient(circle farthest-corner at center center, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.78) 80%);
+    background: -webkit-radial-gradient(circle farthest-corner at center center, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.78) 80%);
+    background: -moz-radial-gradient(circle farthest-corner at center center, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.78) 80%);
     position: fixed;
     width: 100%;
     height: 100%;
@@ -10,37 +13,75 @@
     .seleccion > div {
         max-width: 700px;
         min-width: 250px;
-        border-radius: 4px;
-        background-color: #EEEEEE;
+        border-radius: 25px 25px 25px 25px;
+        -webkit-border-radius: 25px 25px 25px 25px;
+        -moz-border-radius: 25px 25px 25px 25px;
+        background: #ffffff;
         border: none;
-        overflow: hidden;
         margin: 100px auto;
         width: 90%;
         box-shadow: 0px 11px 15px -7px rgb(0 0 0 / 20%), 0px 24px 38px 3px rgb(0 0 0 / 14%), 0px 9px 46px 8px rgb(0 0 0 / 12%);
-        animation-name: fadeIn_Modal;
         animation-duration: 0.8s;
         text-align: center;
+        padding: 30px;
+    }
+
+    .seleccion label {
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+    .seleccion a {
+        border-radius: 24px 24px 24px 24px;
+        -webkit-border-radius: 24px 24px 24px 24px;
+        -moz-border-radius: 24px 24px 24px 24px;
+        background: #7aba7a;
+        border: 3px solid #81a374;
+        color: #ffffff;
+        padding: 10px;
+        margin: 20px;
+        text-decoration: none;
+        box-shadow: 10px 10px 11px -9px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 10px 10px 11px -9px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 11px -9px rgba(0,0,0,0.75);
     }
 
 .encabezado {
+    padding: 15px;
     text-align: center;
     font-size: 40px;
-    height: 80px;
+    height: 100px;
+    background: #bda2eb;
+    background: radial-gradient(circle farthest-corner at center center, #bda2eb 0%, #d3b0e8 80%);
+    background: -webkit-radial-gradient(circle farthest-corner at center center, #bda2eb 0%, #d3b0e8 80%);
+    background: -moz-radial-gradient(circle farthest-corner at center center, #bda2eb 0%, #d3b0e8 80%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
-    .encabezado #duda {
-        float: right;
-        border: 1px solid black;
-        border-radius: 100px;
-        height: 50px;
-        width: 50px;
-        font-size: 40px;
-    }
+#titulo {
+    color: white;
+    font-size: 100px;
+}
 
-    .encabezado div {
-        float: left;
-        text-align: left;
-    }
+.encabezado #duda {
+    float: right;
+    border: 5px solid #e05959;
+    background: #ff6550;
+    border-radius: 100px;
+    height: 50px;
+    width: 50px;
+    font-size: 40px;
+    text-decoration: none;
+    color: white;
+}
+
+.encabezado div {
+    float: left;
+    text-align: left;
+}
 
 .memorama {
     display: grid;
@@ -48,6 +89,7 @@
     grid-gap: 5px;
     padding: 0;
     margin: 20px;
+    margin-top: 150px;
     text-align: center;
 }
 
@@ -56,6 +98,12 @@
         height: 200px;
         border: 1px solid black;
     }
+
+.card_pos:hover, img:hover {
+    cursor: pointer;
+    background-color: RGBA(25,88,74,0.31);
+    border: 3px solid RGBA(25,88,74,0.31);
+}
 
 .instrucciones {
     display: none;
@@ -68,6 +116,7 @@
 }
 
     .instrucciones > div {
+        padding: 20px;
         max-width: 700px;
         min-width: 250px;
         border-radius: 4px;
@@ -82,13 +131,21 @@
         text-align: center;
     }
 
+    .instrucciones div label {
+        font-size: 35px;
+        font-weight: bold;
+    }
+
     .instrucciones div a {
         float: right;
-        border: 1px solid black;
         border-radius: 100px;
         width: 30px;
         height: 30px;
         font-size: 30px;
+        border: 5px solid #e05959;
+        background: #ff6550;
+        color: white;
+        text-decoration: none;
     }
 
     .instrucciones div ol {
@@ -101,14 +158,21 @@
 }
 
     .replay div a {
-        border: 1px solid black;
         border-radius: 100px;
         width: 50px;
         height: 50px;
         font-size: 60px;
+        border: 5px solid #e05959;
+        background: #ff6550;
+        color: white;
+        text-decoration: none;
     }
 
 .finJuego {
     text-align: center;
     font-size: 30px;
+}
+
+#mensaje {
+    font-weight: bold;
 }

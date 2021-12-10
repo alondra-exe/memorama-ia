@@ -11,10 +11,10 @@
     <div class="encabezado">
         <div>
             <label>JUGADOR:</label>
-            <label>1</label>
+            <label id="puntajeUsuario">0</label>
             <br />
             <label>IA:</label>
-            <label>1</label>
+            <label id="puntajeIA">0</label>
         </div>
         <label>MEMORAMA</label>
         <a id="duda" href="javascript:instrucciones()">?</a>
@@ -22,103 +22,80 @@
 
     <div class="memorama">
         <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
-        </div>
-
-        <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
-        </div>
-
-        <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
-        </div>
-
-        <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
-        </div>
-
-        <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
-        </div>
-
-        <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
-        </div>
-
-        <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
-        </div>
-
-        <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
-        </div>
-
-        <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
-        </div>
-
-        <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
-        </div>
-
-        <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
-        </div>
-
-        <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
-        </div>
-
-        <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
-        </div>
-
-        <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
-        </div>
-
-        <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
+            <img class="card_img" id="pos1" src="images/back.png" onclick="ClickImagenUsuario('pos1')"/>
         </div>
         <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
+            <img class="card_img" id="pos2" src="images/back.png" onclick="ClickImagenUsuario('pos2')"/>
         </div>
         <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
+            <img class="card_img" id="pos3" src="images/back.png" onclick="ClickImagenUsuario('pos3')"/>
         </div>
         <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
+            <img class="card_img" id="pos4" src="images/back.png" onclick="ClickImagenUsuario('pos4')"/>
         </div>
         <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
+            <img class="card_img" id="pos5" src="images/back.png" onclick="ClickImagenUsuario('pos5')"/>
         </div>
         <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
+            <img class="card_img" id="pos6" src="images/back.png" onclick="ClickImagenUsuario('pos6')"/>
         </div>
         <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
+            <img class="card_img" id="pos7" src="images/back.png" onclick="ClickImagenUsuario('pos7')"/>
         </div>
         <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
+            <img class="card_img" id="pos8" src="images/back.png" onclick="ClickImagenUsuario('pos8')"/>
         </div>
         <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
+            <img class="card_img" id="pos9" src="images/back.png" onclick="ClickImagenUsuario('pos9')"/>
         </div>
         <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
+            <img class="card_img" id="pos10" src="images/back.png" onclick="ClickImagenUsuario('pos10')"/>
         </div>
         <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
+            <img class="card_img" id="pos11" src="images/back.png" onclick="ClickImagenUsuario('pos11')"/>
         </div>
         <div class="card_pos">
-            <img class="card_img" id="pos1" src="https://frutass.org/wp-content/uploads/2020/05/Fresa.jpg" />
+            <img class="card_img" id="pos12" src="images/back.png" onclick="ClickImagenUsuario('pos12')"/>
+        </div>
+        <div class="card_pos">
+            <img class="card_img" id="pos13" src="images/back.png" onclick="ClickImagenUsuario('pos13')"/>
+        </div>
+        <div class="card_pos">
+            <img class="card_img" id="pos14" src="images/back.png" onclick="ClickImagenUsuario('pos14')"/>
+        </div>
+        <div class="card_pos">
+            <img class="card_img" id="pos15" src="images/back.png" onclick="ClickImagenUsuario('pos15')"/>
+        </div>
+        <div class="card_pos">
+            <img class="card_img" id="pos16" src="images/back.png" onclick="ClickImagenUsuario('pos16')"/>
+        </div>
+        <div class="card_pos">
+            <img class="card_img" id="pos17" src="images/back.png" onclick="ClickImagenUsuario('pos17')"/>
+        </div>
+        <div class="card_pos">
+            <img class="card_img" id="pos18" src="images/back.png" onclick="ClickImagenUsuario('pos18')"/>
+        </div>
+        <div class="card_pos">
+            <img class="card_img" id="pos19" src="images/back.png" onclick="ClickImagenUsuario('pos19')"/>
+        </div>
+        <div class="card_pos">
+            <img class="card_img" id="pos20" src="images/back.png" onclick="ClickImagenUsuario('pos20')"/>
+        </div>
+        <div class="card_pos">
+            <img class="card_img" id="pos21" src="images/back.png" onclick="ClickImagenUsuario('pos21')"/>
+        </div>
+        <div class="card_pos">
+            <img class="card_img" id="pos22" src="images/back.png" onclick="ClickImagenUsuario('pos22')"/>
         </div>
     </div>
 
     <div class="seleccion" id="modalSeleccion">
         <div>
-            <a href="javascript:ocultarSeleccion()">JUGADOR</a>
-            <a href="javascript:ocultarSeleccion()">IA</a>
+            <label>Seleccione quien incia:</label>
+            <br />
+            <br />
+            <a onclick="IniciarJuego('usuario')">JUGADOR</a>
+            <a onclick="IniciarJuego('IA')">IA</a>
         </div>
     </div>
 
@@ -141,7 +118,7 @@
     </div>
 
     <div class="finJuego" id="modalFin">
-        <div>
+        <div id="mensaje">
             <label>FIN DEL JUEGO</label>
             <br />
             <label>GANADOR:</label>
