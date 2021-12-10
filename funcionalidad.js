@@ -27,8 +27,6 @@ var puedeJugar = false; // permite al usuario para dar vuelta a las cartas si es
 var puntosUsuario = 0; // Pares entontrados por el usuario
 var puntosIA = 0; // Pares entontrados por la IA
 
-var JugadorInicial; //Jugador que iniciara el juego
-
 var CantidadCartasVolteadas = 0; // número de cartas que han sido volteadas
 
 var VolteoPorTurnos = 0; // Numero de cartas que ha elegido el jugador o la IA en un turno
@@ -45,43 +43,34 @@ var ImagenesVolteadas = []; // Arreglo que almacena las imagenes que han sido vo
 var imagenesRandom = []; // Arreglo que almacena las imagenes barajeadas
 var cartasRandom = {}; // Arreglo que almacena las cartas barajeadas
 
-// Imagenes para las 30 cartas
-var img1 = "../images/" + theme + "/cards/img1.png";
-var img2 = "../images/" + theme + "/cards/img2.png";
-var img3 = "../images/" + theme + "/cards/img3.png";
-var img4 = "../images/" + theme + "/cards/img4.png";
-var img5 = "../images/" + theme + "/cards/img5.png";
-var img6 = "../images/" + theme + "/cards/img6.png";
-var img7 = "../images/" + theme + "/cards/img7.png";
-var img8 = "../images/" + theme + "/cards/img8.png";
-var img9 = "../images/" + theme + "/cards/img9.png";
-var img10 = "../images/" + theme + "/cards/img10.png";
-var img11 = "../images/" + theme + "/cards/img11.png";
-var img12 = "../images/" + theme + "/cards/img12.png";
-var img13 = "../images/" + theme + "/cards/img13.png";
-var img14 = "../images/" + theme + "/cards/img14.png";
-var img15 = "../images/" + theme + "/cards/img15.png";
+// Imagenes para las 22 cartas
+var img1 = "images/img1.png";
+var img2 = "images/img2.png";
+var img3 = "images/img3.png";
+var img4 = "images/img4.png";
+var img5 = "images/img5.png";
+var img6 = "images/img6.png";
+var img7 = "images/img7.png";
+var img8 = "images/img8.png";
+var img9 = "images/img9.png";
+var img10 = "images/img10.png";
+var img11 = "images/img11.png";
 
 // reverso de las cartas
-var ReversoImg = "../images/" + theme + "/icons/back.png";
+var ReversoImg = "images/back.png";
 
 // Imagenes para indicar que un par de cartas fue encontrado (uno para el usuario y otra para la IA)
-var ImagenAleatoriaIA = "../images/" + theme + "/icons/empty2.png";
-var ImagenAleatoriaUsuario = "../images/" + theme + "/icons/empty.png";
-var ImagenAleatoria = "../images/" + theme + "/icons/empty.png";
 
-// imagenes: Arrego con todos los pares de imagenes (15 pares o 30 elementos)
+// imagenes: Arrego con todos los pares de imagenes (11 pares o 22 elementos)
 var imagenes = [img1, img1, img2, img2, img3, img3, img4, img4, img5, img5,
 	img6, img6, img7, img7, img8, img8, img9, img9, img10, img10,
-	img11, img11, img12, img12, img13, img13, img14, img14, img15,
-	img15];
+	img11, img11];
 
 // posiciones: Arreglo con las posiciones de las cartas
 var posiciones = ['pos1', 'pos2', 'pos3', 'pos4', 'pos5', 'pos6', 'pos7',
 	'pos8', 'pos9', 'pos10', 'pos11', 'pos12', 'pos13', 'pos14',
 	'pos15', 'pos16', 'pos17', 'pos18', 'pos19', 'pos20', 'pos21',
-	'pos22', 'pos23', 'pos24', 'pos25', 'pos26', 'pos27', 'pos28',
-	'pos29', 'pos30'];
+	'pos22'];
 
 var numeroCartas = imagenes.length // numero de pares multiplicado por 2 (total de cartas)
 
@@ -119,25 +108,9 @@ while (temRand.length != numeroCartas) {
 	}
 }
 
-// Crea e inicializa el barajeado de las imagenes y de las posiciones
+// Crea e inicializa el barajeado de las posiciones
 for (var a = 0; a < numeroCartas; a++) {
 	cartasRandom[posiciones[a]] = imagenesRandom[a];
-}
-
-/**
- * Indicador que muestra que es el turno del usuario
- */
-function highlightUser() {
-	document.getElementById('turno_usuario').style.backgroundColor = "#FCFE78";
-	document.getElementById('turno_ia').style.backgroundColor = "#42B8C2";
-}
-
-/**
- * Indicador que muestra que es el turno del IA
- */
-function highlightAI() {
-	document.getElementById('turno_ia').style.backgroundColor = "#FCFE78";
-	document.getElementById('turno_usuario').style.backgroundColor = "#42B8C2";
 }
 
 // - - - - - - - FFunciones para antes de que inicie el juego - - - - - - - -
@@ -148,22 +121,20 @@ function highlightAI() {
  * uno que indica que empezara el usuario y otro que indica que será la IA, esto iniciara el juego y modificara las variables
  * turnoUsuario o turnoIA y cambiara el valor de puedeJugar a true.
  */
-function IniciarJuegoModal(JugadorInicial) {
-	var IniciarJuegoModal = document.getElementById('start_game_modal');
-	if (JugadorInicial == "user") {
-		highlightUser();
+function IniciarJuego(JugadorInicial) {
+	var modalSeleccion = document.getElementById('modalSeleccion');
+	if (JugadorInicial == "usuario") {
 		turnoUsuario = true;
 		puedeJugar = true;
 		turnoIA = false;
 	}
 	else {
-		highlightAI();
 		turnoUsuario = false;
 		puedeJugar = false;
 		turnoIA = true;
-		IniciarTimer(VolteosIA, 600);
+		setTimeout(JugarIA, 600);
 	}
-	IniciarJuegoModal.style.display = "none";
+	modalSeleccion.style.display = "none";
 }
 
 // - - - - - - - - - - Funciones del usuario - - - - - - - - - - - -
@@ -176,23 +147,23 @@ function IniciarJuegoModal(JugadorInicial) {
 function ClickImagenUsuario(PosicionID) {
 	ExistenCartas();
 	if (turnoUsuario && puedeJugar) {
-		VolteosUsuario(PosicionID);
+		JugarUsuario(PosicionID);
 	}
 }
 
 /**
- * Las cartas que el usuario escogio se voltean
- * revisa si a las cartas elegidas no se les a encontrado su par y si el usuario no esta seleccionando
+ * Las cartas que el usuario escogio se voltean revisa si a las cartas elegidas
+ * no se les a encontrado su par y si el usuario no esta seleccionando
  * la misma carta dos veces en su turno. Sí es así entonces se almacenarán las cartas volteadas en
  * cartasVolteadas y almacena su posición y su imagen invertida en posiciónVolteada
- * así como en las imagenesVolteadas. Llama despues a la memoriaAutomaticaIA para almacenar automáticamente
+ * así como en imagenesVolteadas. Llama despues a la memoriaAutomaticaIA para almacenar automáticamente
  * la información seleccionada y llama a revisarPares para comprobar si las cartas elegidas
  * son pares.
  * @param {string} [PosicionID] posición del id que el usuario a clickeado.
  * PosicionID -> posición de la carta
- * cartasRepartidas[PosicionID] -> image
+ * cartasRepartidas[PosicionID] -> imagen
  */
-function VolteosUsuario(PosicionID) {
+function JugarUsuario(PosicionID) {
 	if (!posicionesTurnoActual.includes(PosicionID) && !posicionesRemovidas.includes(PosicionID)) {
 		var PosicionImagenUsuario = document.getElementById(PosicionID);
 		posicionesTurnoActual.push(PosicionID);
@@ -206,7 +177,6 @@ function VolteosUsuario(PosicionID) {
 		VolteoPorTurnos += 1;
 		if (VolteoPorTurnos == 2) {
 			puedeJugar = false;
-			IniciarTimer(highlightAI, 1000);
 			revisarPares('user');
 		}
 	}
@@ -218,13 +188,13 @@ function VolteosUsuario(PosicionID) {
  * Revisa si existen pares en los arreglos de la selección automática
  * si es así, llamará a la seleccionAutomatica. De lo contrario, llama a RandomOenMemoria
  */
-function VolteosIA() {
+function JugarIA() {
 	CantidadCartasVolteadas = Object.keys(CartasVolteadas).length;
 	if (SeleccionarPosicionAutomatica.length != 0) {
 		eleccionAutomatica();
 	}
 	else {
-		AleatorioOMemoria();
+		eleccionSemiAleatoria();
 	}
 }
 
@@ -279,20 +249,20 @@ function memoriaAutomaticaIA(pos, img) {
 		autoImgPos2 = pos;
 		SeleccionarImagenAutomatica.push(autoImg1);
 		SeleccionarPosicionAutomatica.push(autoImgPos1);
-		SeleccionarImagenAutomatica.push(img);
-		SeleccionarPosicionAutomatica.push(pos);
+		SeleccionarImagenAutomatica.push(autoImg2);
+		SeleccionarPosicionAutomatica.push(autoImgPos2);
 		ImagenAutomatica.push(img);
 		posicionAutomatica.push(pos);
 	}
 }
 
 /**
- * Selecciona aleatoriamente la primera carta voltear, luego la comprueba en las cartasVolteadas
+ * Selecciona aleatoriamente la primera carta a voltear, luego comprueba en las cartasVolteadas
  * si su par se ha volteado anteriormente. Sí es así, voltea su par así como su
- * segunda carta. de otra manera, (si no se encuentra en las cartasVolteadas) la selecciona al azar
+ * segunda carta. De otra manera, (si no se encuentra en las cartasVolteadas) selecciona al azar
  * una carta como su segunda carta
  */
-function AleatorioOMemoria() {
+function eleccionSemiAleatoria() {
 	var EncontrarCartaAleatoria1 = true;
 	var EncontrarCarta2 = true;
 	var EncontrarCartaAleatoria2 = true;
@@ -305,7 +275,7 @@ function AleatorioOMemoria() {
 			if (PosicionesVolteadas.includes(posiciones[NumeroAleatorio])) {
 				if (CantidadCartasVolteadas >= numeroCartas) {
 					EncontrarCartaAleatoria1 = false;
-					getImage();
+					getImagen();
 					CantidadCartasVolteadas = Object.keys(CartasVolteadas).length;
 					PrimerImgIA = cartasRandom[posiciones[NumeroAleatorio]];
 					PrimerPosIA = posiciones[NumeroAleatorio];
@@ -316,7 +286,7 @@ function AleatorioOMemoria() {
 			}
 			else {
 				EncontrarCartaAleatoria1 = false;
-				getImage();
+				getImagen();
 				CantidadCartasVolteadas = Object.keys(CartasVolteadas).length;
 				PrimerImgIA = cartasRandom[posiciones[NumeroAleatorio]];
 				PrimerPosIA = posiciones[NumeroAleatorio];
@@ -353,7 +323,7 @@ function AleatorioOMemoria() {
 				if (PosicionesVolteadas.includes(posiciones[NumeroAleatorio])) {
 					if (CantidadCartasVolteadas >= numeroCartas) {
 						EncontrarCartaAleatoria2 = false;
-						getImage();
+						getImagen();
 					}
 					else {
 						EncontrarCartaAleatoria2 == true;
@@ -361,19 +331,18 @@ function AleatorioOMemoria() {
 				}
 				else {
 					EncontrarCartaAleatoria2 = false;
-					getImage();
+					getImagen();
 				}
 			}
 		}
 	}
-	IniciarTimer(highlightUser, 1000);
 	revisarPares('ai');
 }
 
 /**
- * Selecciona aleatoriamente una carta. Usando RandomOenMemoria varias veces.
+ * Selecciona aleatoriamente una carta. Usado varias veces en la funcion AleatorioOMemoria.
  */
-function getImage() {
+function getImagen() {
 	carta1IA = document.getElementById(posiciones[NumeroAleatorio]);
 	posicionesTurnoActual.push(posiciones[NumeroAleatorio]);
 	CartasVolteadas[posiciones[NumeroAleatorio]] = carta1IA;
@@ -387,7 +356,7 @@ function getImage() {
 }
 
 /**
- * Remueve las	cartas volteadas de SeleccionarPosicionAutomatica y SeleccionarImagenAutomatica, de esta manera:
+ * Remueve lascartas volteadas de SeleccionarPosicionAutomatica y SeleccionarImagenAutomatica, de esta manera:
  * SeleccionarPosicionAutomatica, y SeleccionarImagenAutomaticade se copían en EliminarPosicionVolteadaoral,
  * y EliminarPosicionVolteadaoral respectivamente. entonces, cartas de SeleccionAutomatica que
  * no han sido volteadas son introducidas a SeleccionarPosicionAutomatica and SeleccionarImagenAutomaticade, por lo tanto
@@ -395,7 +364,7 @@ function getImage() {
  * @param {String} [card1] index de la primer carta que sera removida
  * @param {String} [card2] index de la segúnda carta que sera removida
  */
-function updateeleccionAutomatica(card1, card2) {
+function updateSeleccionAutomatica(card1, card2) {
 	EliminarPosicionVolteada = SeleccionarPosicionAutomatica;
 	EliminarImagenVolteada = SeleccionarImagenAutomatica;
 	SeleccionarPosicionAutomatica = [];
@@ -419,31 +388,27 @@ function updateeleccionAutomatica(card1, card2) {
 */
 function revisarPares(Jugador) {
 	if (turnoElegido[0] == turnoElegido[1]) {
-		updateeleccionAutomatica(posicionesTurnoActual[0], posicionesTurnoActual[1]);
+		updateSeleccionAutomatica(posicionesTurnoActual[0], posicionesTurnoActual[1]);
 		if (Jugador == 'ai') {
 			puntosIA += 1;
-			document.getElementById('Puntaje_IA').innerHTML = puntosIA;
+			document.getElementById('puntajeIA').innerHTML = puntosIA;
 			turnoIA = true;
-			IniciarTimer(highlightAI, 1000);
-			ImagenAleatoria = ImagenAleatoriaIA;
 		}
 		if (Jugador == 'user') {
 			puntosUsuario += 1;
-			document.getElementById('score_user').innerHTML = puntosUsuario;
+			document.getElementById('puntajeUsuario').innerHTML = puntosUsuario;
 			turnoUsuario = true;
 			puedeJugar = false;
-			IniciarTimer(highlightUser, 1000);
 			turnoIA = false;
-			ImagenAleatoria = ImagenAleatoriaUsuario;
 		}
 		posicionesRemovidas.push(posicionesTurnoActual[0]);
 		posicionesRemovidas.push(posicionesTurnoActual[1]);
-		IniciarTimer(RemoverImagen, 1000);
+		setTimeout(RemoverImagen, 1000);
 	}
 	else {
 		turnoUsuario = !turnoUsuario;
 		turnoIA = !turnoIA;
-		IniciarTimer(ImagenesNoVolteadas, 1000);
+		setTimeout(ImagenesNoVolteadas, 1000);
 	}
 	turnoElegido = [];
 }
@@ -455,16 +420,13 @@ function revisarPares(Jugador) {
  */
 function RemoverImagen() {
 	posicionesTurnoActual = [];
-	posicioneElegida[0].src = ImagenAleatoria;
-	posicioneElegida[1].src = ImagenAleatoria;
 	VolteoPorTurnos = 0;
 	posicioneElegida = [];
 	ExistenCartas();
 	if (turnoIA) {
-		VolteosIA();
+		JugarIA();
 	}
 	else {
-		IniciarTimer(highlightUser, 1000);
 		puedeJugar = true;
 	}
 }
@@ -482,10 +444,9 @@ function ImagenesNoVolteadas() {
 	posicioneElegida = [];
 	ExistenCartas();
 	if (turnoIA) {
-		VolteosIA();
+		JugarIA();
 	}
 	else {
-		IniciarTimer(highlightUser, 1000);
 		puedeJugar = true;
 	}
 }
@@ -516,7 +477,7 @@ function JuegoFinalizado() {
 }
 
 /**
- * Muestra el juegoFinalizadoModalcon un mensaje que indica si perdiste
+ * Muestra el juegoFinalizadoModal con un mensaje que indica si perdiste
  * o si ganaste, el puntaje final, una imagen del tema, y dos botones
  * para jugar de nuevo o para regresar al inicio. El usuario tiene que presionar una de los dos
  * botones o salir de la página.
