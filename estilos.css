@@ -1,5 +1,9 @@
-﻿.seleccion {
-    background: background: rgba(0,0,0,0.68);
+﻿html{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.seleccion {
+    background: rgba(0,0,0,0.68);
     background: radial-gradient(circle farthest-corner at center center, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.78) 80%);
     background: -webkit-radial-gradient(circle farthest-corner at center center, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.78) 80%);
     background: -moz-radial-gradient(circle farthest-corner at center center, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.78) 80%);
@@ -11,42 +15,29 @@
 }
 
     .seleccion > div {
-        max-width: 700px;
-        min-width: 250px;
-        border-radius: 25px 25px 25px 25px;
-        -webkit-border-radius: 25px 25px 25px 25px;
-        -moz-border-radius: 25px 25px 25px 25px;
-        background: #ffffff;
-        border: none;
-        margin: 100px auto;
-        width: 90%;
-        box-shadow: 0px 11px 15px -7px rgb(0 0 0 / 20%), 0px 24px 38px 3px rgb(0 0 0 / 14%), 0px 9px 46px 8px rgb(0 0 0 / 12%);
-        animation-duration: 0.8s;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -100px;
+        margin-left: -100px;
+        background-color: white;
         text-align: center;
-        padding: 30px;
-        column-count: 2;
-        -webkit-column-count: 2;
-        -moz-column-count: 2;
-        column-gap: 31px;
-        -webkit-column-gap: 31px;
-        -moz-column-gap: 31px;
-        column-rule: 1px none rgba(0,0,0,0);
-        -webkit-column-rule: 1px none rgba(0,0,0,0);
-        -moz-column-rule: 1px none rgba(0,0,0,0);
+        padding:20px;
+        font-size:20px;
     }
 
-    .seleccion label {
-        font-size: 35px;
-        font-weight: bold;
-    }
+.selector {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
 
     .seleccion a {
-        padding: 10px;
-        margin: 20px;
-        text-decoration: none;
-        box-shadow: 10px 10px 11px -9px rgba(0,0,0,0.75);
-        -webkit-box-shadow: 10px 10px 11px -9px rgba(0,0,0,0.75);
-        -moz-box-shadow: 10px 10px 11px -9px rgba(0,0,0,0.75);
+        cursor:pointer;
+        font-weight:500;
+    }
+
+    .seleccion a:hover{
+        color:red;
     }
 
 .encabezado {
@@ -54,10 +45,10 @@
     text-align: center;
     font-size: 40px;
     height: 100px;
-    background: #bda2eb;
-    background: radial-gradient(circle farthest-corner at center center, #bda2eb 0%, #d3b0e8 80%);
-    background: -webkit-radial-gradient(circle farthest-corner at center center, #bda2eb 0%, #d3b0e8 80%);
-    background: -moz-radial-gradient(circle farthest-corner at center center, #bda2eb 0%, #d3b0e8 80%);
+    background: #d10000;
+    background: radial-gradient(circle farthest-corner at center center, #d10000 0%, #bd0000 80%);
+    background: -webkit-radial-gradient(circle farthest-corner at center center, #d10000 0%, #bd0000 80%);
+    background: -moz-radial-gradient(circle farthest-corner at center center, #d10000 0%, #bd0000 80%);
     position: fixed;
     top: 0;
     left: 0;
@@ -71,25 +62,27 @@
 
 .encabezado #duda {
     float: right;
-    border: 5px solid #e05959;
-    background: #ff6550;
-    border-radius: 100px;
     height: 50px;
     width: 50px;
     font-size: 40px;
     text-decoration: none;
     color: white;
+    font-weight:bold;
 }
 
-.encabezado div {
-    float: left;
-    text-align: left;
-}
+    .encabezado #duda:hover{
+        color:black;
+    }
+
+    .encabezado div {
+        float: left;
+        text-align: left;
+    }
 
 .memorama {
     display: grid;
     grid-template-columns: repeat(9, auto);
-    grid-gap: 5px;
+    grid-gap: 10px;
     padding: 0;
     margin: 20px;
     margin-top: 150px;
@@ -99,7 +92,6 @@
     .memorama img {
         width: 150px;
         height: 200px;
-        border: 1px solid black;
     }
 
 .card_pos:hover, img:hover {
@@ -107,8 +99,11 @@
 }
 
 .instrucciones {
-    display: none;
-    background: radial-gradient(circle, rgba(251,245,248,0.8981967787114846) 0%, rgba(255,255,255,0.8057598039215687) 100%);
+    display:none;
+    background: rgba(0,0,0,0.68);
+    background: radial-gradient(circle farthest-corner at center center, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.78) 80%);
+    background: -webkit-radial-gradient(circle farthest-corner at center center, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.78) 80%);
+    background: -moz-radial-gradient(circle farthest-corner at center center, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.78) 80%);
     position: fixed;
     width: 100%;
     height: 100%;
@@ -117,64 +112,81 @@
 }
 
     .instrucciones > div {
-        padding: 20px;
-        max-width: 700px;
-        min-width: 250px;
-        border-radius: 4px;
-        background-color: #EEEEEE;
-        border: none;
-        overflow: hidden;
-        margin: 100px auto;
-        width: 90%;
-        box-shadow: 0px 11px 15px -7px rgb(0 0 0 / 20%), 0px 24px 38px 3px rgb(0 0 0 / 14%), 0px 9px 46px 8px rgb(0 0 0 / 12%);
-        animation-name: fadeIn_Modal;
-        animation-duration: 0.8s;
+        position: fixed;
+        margin: 0 auto;
+        top: 50%;
+        left: 20%;
+        right: 20%;
+        margin-top: -100px;
+        background-color: white;
         text-align: center;
-    }
-
-    .instrucciones div label {
-        font-size: 35px;
-        font-weight: bold;
+        padding: 20px;
+        font-size: 20px;
     }
 
     .instrucciones div a {
         float: right;
-        border-radius: 100px;
-        width: 30px;
-        height: 30px;
         font-size: 30px;
-        border: 5px solid #e05959;
-        background: #ff6550;
-        color: white;
         text-decoration: none;
+        color:black;
     }
 
-    .instrucciones div ol {
-        text-align: left;
-    }
+        .instrucciones div a:hover{
+            color:red;
+        }
 
-.replay {
-    text-align: center;
-    font-size: 30px;
+        .instrucciones div ol {
+            text-align: left;
+        }
+
+.replay div a {
+    color: black;
+    text-decoration: none;
+    font-weight:bold;
+    font-size:40px;
 }
 
-    .replay div a {
-        border-radius: 100px;
-        width: 50px;
-        height: 50px;
-        font-size: 60px;
-        border: 5px solid #e05959;
-        background: #ff6550;
-        color: white;
-        text-decoration: none;
+    .replay div a:hover{
+        color:red;
     }
 
-.finJuego {
-    display: none;
-    text-align: center;
-    font-size: 30px;
+    .finJuego {
+        display:none;
+        background: rgba(0,0,0,0.68);
+        background: radial-gradient(circle farthest-corner at center center, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.78) 80%);
+        background: -webkit-radial-gradient(circle farthest-corner at center center, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.78) 80%);
+        background: -moz-radial-gradient(circle farthest-corner at center center, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.78) 80%);
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    .finJuego > div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -100px;
+        margin-left: -100px;
+        background-color: white;
+        text-align: center;
+        padding: 20px;
+        font-size: 20px;
+    }
+
+#Ganador{
+    color:red;
+    font-weight:bold;
 }
 
-#mensaje {
-    font-weight: bold;
+.equipo {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgb(16,16,16);
+    color: rgb(110,110,110);
+    text-align:center;
+    font-size:10px;
 }
