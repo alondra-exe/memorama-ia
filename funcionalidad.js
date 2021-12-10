@@ -7,7 +7,7 @@ function ocultarInstrucciones() {
 }
 
 function finJuego() {
-	document.querySelector("#modalFin").style.display = "none";
+	document.querySelector("#modalFin").style.display = "block";
 }
 
 function ocultarSeleccion() {
