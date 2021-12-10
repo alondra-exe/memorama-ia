@@ -101,8 +101,6 @@
 
 .card_pos:hover, img:hover {
     cursor: pointer;
-    background-color: RGBA(25,88,74,0.31);
-    border: 3px solid RGBA(25,88,74,0.31);
 }
 
 .instrucciones {
@@ -169,6 +167,7 @@
     }
 
 .finJuego {
+    display: none;
     text-align: center;
     font-size: 30px;
 }
