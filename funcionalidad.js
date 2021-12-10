@@ -6,7 +6,7 @@ function ocultarInstrucciones() {
 	document.querySelector("#modalInstrucciones").style.display = "none";
 }
 
-function ocultarSeleccion() {
+function finJuego() {
 	document.querySelector("#modalFin").style.display = "none";
 }
 
