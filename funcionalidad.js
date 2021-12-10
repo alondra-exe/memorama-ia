@@ -44,17 +44,17 @@ var imagenesRandom = []; // Arreglo que almacena las imagenes barajeadas
 var cartasRandom = {}; // Arreglo que almacena las cartas barajeadas
 
 // Imagenes para las 22 cartas
-var img1 = "images/img1.png";
-var img2 = "images/img2.png";
-var img3 = "images/img3.png";
-var img4 = "images/img4.png";
-var img5 = "images/img5.png";
-var img6 = "images/img6.png";
-var img7 = "images/img7.png";
-var img8 = "images/img8.png";
-var img9 = "images/img9.png";
-var img10 = "images/img10.png";
-var img11 = "images/img11.png";
+var img1 = "https://upload.wikimedia.org/wikipedia/commons/5/57/Playing_card_heart_A.svg";
+var img2 = "https://upload.wikimedia.org/wikipedia/commons/f/f2/Playing_card_spade_2.svg";
+var img3 = "https://upload.wikimedia.org/wikipedia/commons/8/82/Playing_card_diamond_3.svg";
+var img4 = "https://upload.wikimedia.org/wikipedia/commons/3/3d/Playing_card_club_4.svg";
+var img5 = "https://upload.wikimedia.org/wikipedia/commons/5/52/Playing_card_heart_5.svg";
+var img6 = "https://upload.wikimedia.org/wikipedia/commons/d/d2/Playing_card_spade_6.svg";
+var img7 = "https://upload.wikimedia.org/wikipedia/commons/e/e6/Playing_card_diamond_7.svg";
+var img8 = "https://upload.wikimedia.org/wikipedia/commons/e/eb/Playing_card_club_8.svg";
+var img9 = "https://upload.wikimedia.org/wikipedia/commons/5/50/Playing_card_heart_9.svg";
+var img10 = "https://upload.wikimedia.org/wikipedia/commons/8/87/Playing_card_spade_10.svg";
+var img11 = "https://upload.wikimedia.org/wikipedia/commons/b/be/Playing_card_diamond_11.svg";
 
 // reverso de las cartas
 var ReversoImg = "images/back.png";
@@ -471,28 +471,11 @@ function ExistenCartas() {
 function JuegoFinalizado() {
 	turnoUsuario = false;
 	turnoIA = false;
-	document.getElementById('turno_ia').style.backgroundColor = "#42B8C2";
-	document.getElementById('turno_usuario').style.backgroundColor = "#42B8C2";
-	actualizarjuegoFinalizadoModal();
-}
-
-/**
- * Muestra el juegoFinalizadoModal con un mensaje que indica si perdiste
- * o si ganaste, el puntaje final, una imagen del tema, y dos botones
- * para jugar de nuevo o para regresar al inicio. El usuario tiene que presionar una de los dos
- * botones o salir de la página.
- */
-function actualizarjuegoFinalizadoModal() {
-	var MensajeGanador;
-	var juegoFinalizadoModal = document.getElementById('Juego_Finalizado_Modal');
-	juegoFinalizadoModal.style.display = "block";
-	document.getElementById('Puntaje_Final_IA').innerHTML = puntosIA;
-	document.getElementById('Puntaje_Final_Usuario').innerHTML = puntosUsuario;
 	if (puntosIA > puntosUsuario) {
-		MensajeGanador = "Perdiste!";
+		document.getElementById('Ganador').innerHTML = "IA";
 	}
 	else {
-		MensajeGanador = "Ganaste!";
-	}
-	document.getElementById('Letrero_Final_txt').innerHTML = MensajeGanador;
+		document.getElementById('Ganador').innerHTML = "Usuario";
+    }
+	finJuego()
 }
