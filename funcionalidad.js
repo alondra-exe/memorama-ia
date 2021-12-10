@@ -471,28 +471,11 @@ function ExistenCartas() {
 function JuegoFinalizado() {
 	turnoUsuario = false;
 	turnoIA = false;
-	document.getElementById('turno_ia').style.backgroundColor = "#42B8C2";
-	document.getElementById('turno_usuario').style.backgroundColor = "#42B8C2";
-	actualizarjuegoFinalizadoModal();
-}
-
-/**
- * Muestra el juegoFinalizadoModal con un mensaje que indica si perdiste
- * o si ganaste, el puntaje final, una imagen del tema, y dos botones
- * para jugar de nuevo o para regresar al inicio. El usuario tiene que presionar una de los dos
- * botones o salir de la página.
- */
-function actualizarjuegoFinalizadoModal() {
-	var MensajeGanador;
-	var juegoFinalizadoModal = document.getElementById('Juego_Finalizado_Modal');
-	juegoFinalizadoModal.style.display = "block";
-	document.getElementById('Puntaje_Final_IA').innerHTML = puntosIA;
-	document.getElementById('Puntaje_Final_Usuario').innerHTML = puntosUsuario;
 	if (puntosIA > puntosUsuario) {
-		MensajeGanador = "Perdiste!";
+		document.getElementById('Ganador').innerHTML = "IA";
 	}
 	else {
-		MensajeGanador = "Ganaste!";
-	}
-	document.getElementById('Letrero_Final_txt').innerHTML = MensajeGanador;
+		document.getElementById('Ganador').innerHTML = "Usuario";
+    }
+	finJuego()
 }
